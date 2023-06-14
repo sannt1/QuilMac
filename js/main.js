@@ -1,184 +1,191 @@
-let usuario = "Santiago"
-let password = "prueba"
-let ingreso = false
-
-for (let i = 2; i >=0; i--) {
-    let ingresoUsuario = prompt("Ingresa tu usuario. Tienes " + (i + 1) + " intentos"
-    );
-    let ingresoPassword = prompt("Ingresa tu contraseña. Tienes " + (i + 1) + " intentos"
-    );    
-    if (ingresoUsuario === usuario && ingresoPassword === password) {
-        alert("Hola nuevamente " + usuario + "!")
-        ingreso = true;
-        break;
-    } else {
-        alert("Credenciales incorrectas");
-    }
-}
-
-function stock() {
-     alert("Actualmente tenemos estos equipos disponibles");
-}
-function verificarStock(producto) {
-    switch (producto) {
-      case "iPhone":
-        alert("11, 11 Pro, 12, 12 Pro, 13, 13 Pro Max, 14 PLUS");
-        break;
-      case "Mac":
-        alert("M1, Air, M2 PRO");
-        break;
-      case "iPad":
-        alert("Lamentablemente no tenemos stock de iPad por el momento");
-        break;
-      default:
-        alert("No se reconoce el producto");
-    }
-  }
-  
-
-if (ingreso){
-    let opcion = prompt(
-        "¿Cual va a ser tu nueva adquisición?: \n1- iPhone. \n2- Macbook. \n3- iPad. \nPresioná X para salir."
-    );
-    while (opcion != "x") {
-        switch (opcion) {
-            case "1":
-                stock();
-                verificarStock("iPhone");
-                break;
-            case "2":
-                stock();
-                verificarStock("Mac");
-                break;            
-            case "3":
-                verificarStock("iPad")
-                break;
-                
-            default:
-                alert("Opción no valida");
-                break;
-        }
-        opcion = prompt(
-            "¿Cual va a ser tu nueva adquisición?: \n1- iPhone. \n2- Macbook. \n3- iPad. \nPresioná X para salir."
-        );
-    }
-} else {
-    alert("¡Gracias por elegirnos!")
-}
-
-const iPhone = [
-    { id: 1, modelo: "iPhone 8 Plus", precio: 200 },
-    { id: 2, modelo: "iPhone X", precio: 400 },
-    { id: 3, modelo: "iPhone XR", precio: 500 },
-    { id: 4, modelo: "iPhone XS", precio: 600 },
-    { id: 5, modelo: "iPhone XS Max", precio: 700 },
-    { id: 6, modelo: "iPhone 11", precio: 800 },
-    { id: 7, modelo: "iPhone 11 Pro", precio: 1000 },
-    { id: 8, modelo: "iPhone 11 Pro Max", precio: 1100 },
-    { id: 9, modelo: "iPhone SE (2nd generation)", precio: 300 },
-    { id: 10, modelo: "iPhone 12", precio: 1200 },
-    { id: 11, modelo: "iPhone 12 Mini", precio: 1000 },
-    { id: 12, modelo: "iPhone 12 Pro", precio: 1300 },
-    { id: 13, modelo: "iPhone 12 Pro Max", precio: 1400 },
-    { id: 14, modelo: "iPhone 13", precio: 1500 },
-    { id: 15, modelo: "iPhone 13 Mini", precio: 1300 },
-    { id: 16, modelo: "iPhone 13 Pro", precio: 1600 },
-    { id: 17, modelo: "iPhone 13 Pro Max", precio: 1700 },
-    { id: 14, modelo: "iPhone 14", precio: 1800 },
-    { id: 15, modelo: "iPhone 14 Plus", precio: 1900 },
-    { id: 16, modelo: "iPhone 14 Pro", precio: 2000 },
-    { id: 17, modelo: "iPhone 14 Pro Max", precio: 2200 },
+// // Datos de productos
+const products = [
+  //IPAD
+  { id: 1, name: "iPad Pro", category: "iPad", price: 799 },
+  { id: 2, name: "iPad Air", category: "iPad", price: 599 },
+  { id: 3, name: "iPad (8th generation)", category: "iPad", price: 300 },
+  { id: 4, name: "iPad Air (4th generation)", category: "iPad", price: 500 },
+  { id: 5, name: "iPad Pro 11-inch", category: "iPad", pprice: 800 },
+  { id: 6, name: "iPad Pro 12.9-inch", category: "iPad", price: 1000 },
+  { id: 7, name: "iPad Mini (5th generation)", category: "iPad", price: 400 },
+  { id: 8, name: "iPad (9th generation)", category: "iPad", price: 350 },
+  { id: 9, name: "iPad Air (5th generation)", category: "iPad", price: 600 },
+  { id: 10, name: "iPad Pro 11-inch (3rd generation)", category: "iPad", price: 900 },
+  { id: 11, name: "iPad Pro 12.9-inch (5th generation)", category: "iPad", price: 1200 },
+  //MAC
+  { id: 12, name: "MacBook Pro", category: "Mac", price: 1999 },
+  { id: 13, name: "MacBook Air", category: "Mac", price: 1000 },
+  { id: 14, name: "MacBook Pro (13-inch)", category: "Mac", price: 1500 },
+  { id: 15, name: "MacBook Pro (16-inch)", category: "Mac", price:2000 },
+  { id: 16, name: "iMac", category: "Mac", price: 1200 },
+  { id: 17, name: "iMac Pro", category: "Mac", price: 5000 },
+  { id: 18, name: "Mac mini", category: "Mac", price: 800 },
+  //IPHONE
+  { id: 19, name: "iPhone 8 Plus", category: "iPhone" , price: 200 },
+  { id: 20, name: "iPhone X", category: "iPhone" , price: 400 },
+  { id: 21, name: "iPhone XR", category: "iPhone" , price: 500 },
+  { id: 22, name: "iPhone XS", category: "iPhone" , price: 600 },
+  { id: 23, name: "iPhone XS Max", category: "iPhone" , price: 700 },
+  { id: 24, name: "iPhone 11", category: "iPhone", price: 800 },
+  { id: 25, name: "iPhone 11 Pro",  category: "iPhone", price: 1000 },
+  { id: 26, name: "iPhone 11 Pro Max", category:"iPhone", price: 1100 },
+  { id: 27, name: "iPhone SE", category: "iPhone", price: 399 },
+  { id: 28, name: "iPhone 12", category: "iPhone", price: 999 },
+  { id: 29, name: "iPhone 12 Mini", category: "iPhone", precio: 1000 },
+  { id: 30, name: "iPhone 12 Pro", category: "iPhone", precio: 1300 },
+  { id: 31, name: "iPhone 12 Pro Max", category: "iPhone", precio: 1400 },
+  { id: 32, name: "iPhone 13", category: "iPhone", precio: 1500 },
+  { id: 33, name: "iPhone 13 Mini", category: "iPhone", precio: 1300 },
+  { id: 34, name: "iPhone 13 Pro", category: "iPhone", precio: 1600 },
+  { id: 35, name: "iPhone 13 Pro Max", category: "iPhone", precio: 1700 },
+  { id: 36, name: "iPhone 14", category: "iPhone", precio: 1800 },
+  { id: 37, name: "iPhone 14 Plus", category: "iPhone", precio: 1900 },
+  { id: 38, name: "iPhone 14 Pro", category: "iPhone", precio: 2000 },
+  { id: 39, name: "iPhone 14 Pro Max", category: "iPhone", precio: 2200 },
 ];
+// Función para crear opciones en el selector de categorías
+function createCategoryOptions() {
+  // Obtener la lista de categorías en el DOM
+  const categoryList = document.getElementById("categoryList");
 
-const iPads = [
-    { id: 1, modelo: "iPad (8th generation)", precio: 300 },
-    { id: 2, modelo: "iPad Air (4th generation)", precio: 500 },
-    { id: 3, modelo: "iPad Pro 11-inch", precio: 800 },
-    { id: 4, modelo: "iPad Pro 12.9-inch", precio: 1000 },
-    { id: 5, modelo: "iPad Mini (5th generation)", precio: 400 },
-    { id: 6, modelo: "iPad (9th generation)", precio: 350 },
-    { id: 7, modelo: "iPad Air (5th generation)", precio: 600 },
-    { id: 8, modelo: "iPad Pro 11-inch (3rd generation)", precio: 900 },
-    { id: 9, modelo: "iPad Pro 12.9-inch (5th generation)", precio: 1200 },
-];
+  // Crear las opciones de categorías
+  const categories = ["iPhone", "Mac", "iPad"];
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category;
+    option.textContent = category;
+    categoryList.appendChild(option);
+  });
+}
 
-const Macs = [
-    { id: 1, modelo: "MacBook Air", precio: 1000 },
-    { id: 2, modelo: "MacBook Pro (13-inch)", precio: 1500 },
-    { id: 3, modelo: "MacBook Pro (16-inch)", precio: 2000 },
-    { id: 4, modelo: "iMac", precio: 1200 },
-    { id: 5, modelo: "iMac Pro", precio: 5000 },
-    { id: 6, modelo: "Mac Pro", precio: 6000 },
-    { id: 7, modelo: "Mac mini", precio: 800 },
-  ];
-
-  // Función para sumar el precio de los productos en un array dado
-function sumarPrecios(el) {
-    return el.reduce((total, producto) => total + producto.precio, 0);
+// Función para filtrar los productos por categoría
+// Función para cargar los productos del carrito en el DOM
+function filterProductsByCategory(category) {
+  function loadCartItems() {
+      const cartList = document.getElementById("cartList");
+      cartList.innerHTML = "";
+  
+      // Obtener el carrito de compras del almacenamiento
+      let cart = localStorage.getItem("cart");
+      if (!cart) {
+      // Si el carrito no existe, inicializarlo como un array vacío
+      cart = [];
+      } else {
+      // Si el carrito existe, convertirlo en un array de objetos
+      cart = JSON.parse(cart);
+      }
+  
+      // Recorrer los productos del carrito y agregarlos al DOM
+      cart.forEach((product) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = product.name + " - $" + product.price;
+  
+      const removeButton = document.createElement("button");
+      removeButton.textContent = "Quitar";
+      removeButton.addEventListener("click", function () {
+          removeCartItem(product.id);
+      });
+  
+      listItem.appendChild(removeButton);
+      cartList.appendChild(listItem);
+      });
   }
+      
+  // Función para quitar un producto del carrito
+  function removeCartItem(productId) {
+      // Obtener el carrito de compras del almacenamiento
+      let cart = localStorage.getItem("cart");
+      if (!cart) {
+      // Si el carrito no existe, inicializarlo como un array vacío
+      cart = [];
+      } else {
+      // Si el carrito existe, convertirlo en un array de objetos
+      cart = JSON.parse(cart);
+      }
 
-  // Función para sumar el precio de los iPhones disponibles
-function sumarPreciosIphone() {
-    return sumarPrecios(iPhone);
-  }
+      cart = cart.filter((product) => product.id !== productId);
   
-  // Función para sumar el precio de los iPads disponibles
-  function sumarPreciosIpad() {
-    return sumarPrecios(iPads);
-  }
+      // Actualizar el carrito en el almacenamiento
+      localStorage.setItem("cart", JSON.stringify(cart));
   
-  // Función para sumar el precio de las Macs disponibles
-  function sumarPreciosMac() {
-    return sumarPrecios(Macs);
-  }
-
-  console.log("Suma de precios de iPhones:", sumarPreciosIphone());
-  console.log("Suma de precios de iPads:", sumarPreciosIpad());
-  console.log("Suma de precios de Macs:", sumarPreciosMac());
-  
-// simulacion compra de iPhone
-function comprariPhone() {
-    var modelo = prompt("Ingrese el modelo de iPhone que desea comprar:");
-    var iPhoneSeleccionado = iPhone.find(function (iPhone) {
-      return iPhone.modelo.toLowerCase() === modelo.toLowerCase();
-    });
-    if (iPhoneSeleccionado) {
-      alert("El precio del " + iPhoneSeleccionado.modelo + " es $" + iPhoneSeleccionado.precio);
-    } else {
-      alert("El modelo de iPhone ingresado no está disponible.");
-    }
-  }
-comprariPhone();
-
-// Función para obtener los productos con precio menor a $500
-function obtenerBaratos() {
-    // Filtrar iPhones con precio menor a $500
-    const iPhonesBaratos = iPhone.filter(function (iPhone) {
-      return iPhone.precio < 500;
-    });
-  
-    // Filtrar iPads con precio menor a $500
-    const iPadsBaratos = iPads.filter(function (iPad) {
-      return iPad.precio < 500;
-    });
-  
-    // Filtrar Macs con precio menor a $500
-    const macsBaratos = Macs.filter(function (Macs) {
-      return Macs.precio < 500;
-    });
-  
-    // Devolver un objeto con los productos filtrados
-    return {
-      iPhones: iPhonesBaratos,
-      iPads: iPadsBaratos,
-      Macs: macsBaratos,
-    };
+      // Recargar los productos del carrito en el DOM
+      loadCartItems();
   }
   
-  // Llamar a la función y mostrar los productos con precio menor a $500
-  const productosBaratos = obtenerBaratos();
-  
-  console.log("iPhones con precio menor a $500:", productosBaratos.iPhones);
-  console.log("iPads con precio menor a $500:", productosBaratos.iPads);
-  console.log("Macs con precio menor a $500:", productosBaratos.Macs);
-  
+  // Configurar evento de carga de página para cargar los productos y el carrito en el DOM
+  document.addEventListener("DOMContentLoaded", function () {
+      createCategoryOptions();
+      filterProductsByCategory("iPhone");
+      loadCartItems();
+  });
+  // Obtener la lista de productos en el DOM
+  const productList = document.getElementById("productList");
+
+  // Limpiar la lista de productos
+  productList.innerHTML = "";
+
+  // Filtrar los productos por categoría
+  const filteredProducts = products.filter(
+    (product) => product.category === category
+  );
+
+// Recorrer los productos filtrados y agregarlos al DOM
+filteredProducts.forEach((product) => {
+const listItem = document.createElement("li");
+const productName = document.createElement("span");
+productName.textContent = product.name + " - $" + product.price;
+
+  const selectButton = document.createElement("button");
+  selectButton.textContent = "Seleccionar";
+  selectButton.addEventListener("click", function () {
+  addToCart(product);
+  });
+
+  listItem.appendChild(productName);
+  listItem.appendChild(selectButton);
+  productList.appendChild(listItem);
+});
+}
+
+// Configurar evento de cambio para el selector de categorías
+const categoryList = document.getElementById("categoryList");
+if (categoryList) {
+ categoryList.addEventListener("change", function () {
+  const selectedCategory = categoryList.value;
+  filterProductsByCategory(selectedCategory);
+});
+}
+
+// Cargar los productos en el DOM al cargar la página
+document.addEventListener("DOMContentLoaded", function () {
+  createCategoryOptions();
+  filterProductsByCategory("iPhone");
+});
+
+// Función para agregar un producto al carrito
+function addToCart(product) {
+  // Obtener el carrito de compras del almacenamiento
+  let cart = localStorage.getItem("cart");
+  if (!cart) {
+    // Si el carrito no existe, inicializarlo como un array vacío
+    cart = [];
+  } else {
+    // Si el carrito existe, convertirlo en un array de objetos
+    cart = JSON.parse(cart);
+  }
+
+  // Agregar el producto al carrito
+  cart.push(product);
+
+  // Actualizar el carrito en el almacenamiento
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Actualizar la visualización del carrito en el DOM
+  const cartList = document.getElementById("cartList");
+  const listItem = document.createElement("li");
+  listItem.textContent = product.name + " - $" + product.price;
+  cartList.appendChild(listItem);
+
+  // Mostrar un mensaje de éxito
+  alert("El producto ha sido agregado al carrito.");
+}
